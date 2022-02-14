@@ -6,7 +6,9 @@ namespace Rubicards22
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var card = new Card(Color.Diamonds, Value.Ace);
+
+            var spadesCard = card with { Color = Color.Spades };
         }
     }
 }
