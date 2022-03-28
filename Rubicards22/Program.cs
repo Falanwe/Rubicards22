@@ -6,9 +6,11 @@ namespace Rubicards22
     {
         static void Main(string[] args)
         {
-            var card = new Card(Color.Diamonds, Value.Ace);
+            var dealer = new Dealer();
 
-            var spadesCard = card with { Color = Color.Spades };
+            var randomCard = dealer.GetRandomCard();
+
+            Console.WriteLine($"j'ai tiré la carte {randomCard}");
         }
     }
 }
