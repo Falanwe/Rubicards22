@@ -29,6 +29,28 @@ namespace Rubicards22
             {
                 Console.WriteLine($"{nameof(InsertSorter)} failed");
             }
+
+            //var hand = new List<Card>();
+            //var dealer = new Dealer();
+            //for (var i = 0; i < 5; i++)
+            //{
+            //    hand.Add(dealer.GetRandomCard());
+            //}
+            //foreach (var card in sorter.Sort(hand))
+            //{
+            //    Console.WriteLine(card);
+            //}
+
+
+            sorter = new FusionSorter();
+            if (tests.TestSorter(sorter, out count))
+            {
+                Console.WriteLine($"{nameof(FusionSorter)} succeeded in {count} comparisons");
+            }
+            else
+            {
+                Console.WriteLine($"{nameof(FusionSorter)} failed");
+            }
         }
     }
 }
