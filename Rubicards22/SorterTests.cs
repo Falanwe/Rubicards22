@@ -1,36 +1,32 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rubicards22
 {
-    [TestClass]
     public class SorterTests
     {
-        [TestMethod]
-        public void TestListSorter()
+        private static readonly List<Card> _cards = new List<Card>();
+        private static readonly List<Card> _sortedCards = new List<Card>();
+        static SorterTests()
         {
-            var sorter = new ListSorter();
-            var cards = new Card[]
+            var dealer = new Dealer();
+            for(var i = 0; i<1000; i++)
             {
-                new Card(Color.Cubs, Value.Ten),
-                new Card(Color.Hearts, Value.Ace),
-                new Card(Color.Diamonds, Value.Queen),
-                new Card(Color.Hearts, Value.King),
-                new Card(Color.Diamonds, Value.Queen)
-            };
+                _cards.Add(dealer.GetRandomCard());
+            }
 
-            var expected = new Card[]
-            {
-                new Card(Color.Cubs, Value.Ten),
-                new Card(Color.Diamonds, Value.Queen),
-                new Card(Color.Diamonds, Value.Queen),
-                new Card(Color.Hearts, Value.King),
-                new Card(Color.Hearts, Value.Ace),
-                null
-            };
+            _sortedCards = _cards.OrderBy(c => c).ToList();
+        }
 
-            Assert.IsTrue(Enumerable.SequenceEqual(sorter.Sort(cards), expected));
+        public bool TestSorter(ISorter sorter, out int count)
+        {
+            Card.ResetComparisonCount();
+            var sorted = sorter.Sort(_cards);
+
+            count = Card.ComparisonCount;
+            return Enumerable.SequenceEqual(sorted, _sortedCards);
         }
     }
 }

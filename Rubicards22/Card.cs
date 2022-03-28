@@ -11,6 +11,7 @@ namespace Rubicards22
     {
         private static int _comparisonCount;
         public static void ResetComparisonCount() => _comparisonCount = 0;
+        public static int ComparisonCount => _comparisonCount;
 
         private int InnerValue => (int)Value * 4 + (int)Color;
 

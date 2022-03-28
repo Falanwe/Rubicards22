@@ -9,7 +9,12 @@ namespace Rubicards22
         static void Main(string[] args)
         {
             var tests = new SorterTests();
-            tests.TestListSorter();
+
+            var sorter = new ListSorter();
+            if(tests.TestSorter(sorter, out var count))
+            {
+                Console.WriteLine($"{nameof(ListSorter)} succeeded in {count} comparisons");
+            }
         }
     }
 }
