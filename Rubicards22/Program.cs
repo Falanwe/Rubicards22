@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Rubicards22
 {
@@ -6,11 +8,8 @@ namespace Rubicards22
     {
         static void Main(string[] args)
         {
-            var dealer = new Dealer();
-
-            var randomCard = dealer.GetRandomCard();
-
-            Console.WriteLine($"j'ai tiré la carte {randomCard}");
+            var tests = new SorterTests();
+            tests.TestListSorter();
         }
     }
 }

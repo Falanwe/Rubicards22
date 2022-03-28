@@ -8,10 +8,14 @@ namespace Rubicards22
 {
     public class Dealer
     {
+        private readonly Random _random = new Random();
+
         //generate a random card, with equal probability of all cards
         public Card GetRandomCard()
-        {
-            throw new NotImplementedException();
+        {            
+            Color color = (Color)_random.Next(0, Enum.GetValues(typeof(Color)).Length);
+            Value value = (Value)_random.Next(0, Enum.GetValues(typeof(Value)).Length);
+            return new Card(color, value);
         }
     }
 }
