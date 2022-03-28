@@ -25,8 +25,10 @@ namespace Rubicards22
             Card.ResetComparisonCount();
             var sorted = sorter.Sort(_cards);
 
+
+            var result = Enumerable.SequenceEqual(sorted, _sortedCards);
             count = Card.ComparisonCount;
-            return Enumerable.SequenceEqual(sorted, _sortedCards);
+            return result;
         }
     }
 }
